@@ -1,6 +1,6 @@
 # Rock-Paper-Scissors
 
-A simple, interactive Rock-Paper-Scissors game implemented in JavaScript, played directly in the console. The game allows a user to play against the computer, which makes random choices. It demonstrates basic JavaScript concepts such as user input, randomization, conditional logic, and loops.
+A simple, interactive Rock-Paper-Scissors game implemented in JavaScript, played directly in the console. The game allows a user to play against the computer, which makes random choices. It demonstrates basic JavaScript concepts such as user input, randomization, and conditional logic.
 
 ## Features
 
