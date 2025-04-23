@@ -20,7 +20,7 @@ A simple, interactive Rock-Paper-Scissors game implemented in JavaScript, played
 
 - Open the project folder.
 
-- Run the index.html file
+- Run the index.html and script.js file
 
 ## How to Play
 
