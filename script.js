@@ -14,52 +14,89 @@ function getComputerChoice(){
     }
     return answer;
 }
-function getHumanChoice(){
-    let user = prompt("Enter your choice");
-    user = user.charAt(0).toUpperCase() + user.slice(1)
-    return user
-}
+
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice === computerChoice){
-        console.log("Draw")
+        Score.style.whiteSpace = "pre";
+        Score.textContent=`Human Score: ${humanScore} \nComputer Choice: ${computerScore}`;
+        inp_your_score.value = humanScore;
+        inp_comp_score.value = computerScore;
     }
     else if(humanChoice==="Rock" && computerChoice ==="Paper"){
         computerScore= computerScore+1;
-        console.log("You lose! Paper beats Rock")
+        Score.style.whiteSpace = "pre";
+        inp_your_score.value = humanScore;
+        inp_comp_score.value = computerScore;
     }
     else if(humanChoice==="Rock" && computerChoice ==="Scissor"){
         humanScore = humanScore +1;
-        console.log("You Won! Rock beats Scissor")
+        Score.style.whiteSpace = "pre";
+        inp_your_score.value = humanScore;
+        inp_comp_score.value = computerScore;
     }
     else if(humanChoice ==="Paper"&& computerChoice ==="Scissor"){
         computerScore = computerScore +1;
-        console.log("You lose! Scissor beats Paper")
+        Score.style.whiteSpace = "pre";
+        inp_your_score.value = humanScore;
+        inp_comp_score.value = computerScore;
     }
     else if(humanChoice ==="Paper"&& computerChoice ==="Rock"){
         humanScore = humanScore +1;
-        console.log("You Won! Paper beats Rock")
+        Score.style.whiteSpace = "pre";
+        inp_your_score.value = humanScore;
+        inp_comp_score.value = computerScore;
     }
     else if(humanChoice ==="Scissor"&& computerChoice ==="Paper"){
         humanScore = humanScore + 1;
-        console.log("You Won! Scissor beats Paper")
+        Score.style.whiteSpace = "pre";
+        inp_your_score.value = humanScore;
+        inp_comp_score.value = computerScore;
     }
     else if(humanChoice ==="Scissor"&& computerChoice ==="Rock"){
         computerScore = computerScore +1;
-        console.log("You lose! Rock beats Scissor")
+        Score.style.whiteSpace = "pre";
+        inp_your_score.value = humanScore;
+        inp_comp_score.value = computerScore;
     }
 }
-function playGame(){
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    console.log(`Your Choice: ${humanSelection}`);
-    console.log(`Computer Choice: ${computerSelection}`);
-    playRound(humanSelection, computerSelection);
-    console.log(`Your Score ${humanScore}`);
-    console.log(`Computer Score ${computerScore}`);
-    console.log("-------------------------------------")
-}
-for (let index = 1; index <= 5; index++) {
-    playGame();    
-}
+const container = document.querySelector("div");
+const inp_your_score = document.querySelector(".YourScore");
+const Score = document.createElement("div");
+const Score_output = document.querySelector("input");
+const inp_comp_score = document.querySelector(".comp");
+
+container.addEventListener("click", function(e){
+        let val = e.target.value
+        val = val.charAt(0).toUpperCase() + val.slice(1);
+        const computerSelection = getComputerChoice();
+
+        const selection_display1 = document.createElement("div");
+        selection_display1.textContent=`Your Choice: ${val}`;
+        
+
+        const selection_display2 = document.createElement("div");
+        selection_display2.textContent=`Computer Choice: ${computerSelection}`;
+        
+        const decor = document.createElement("div");
+        decor.textContent="------------------------------";
+        playRound(val, computerSelection);
+        container.append(selection_display1);
+        container.append(selection_display2);
+        container.append(decor);
+        
+        if(humanScore ==5 || computerScore == 5){
+            Score.textContent = "You Won";
+            container.append(Score);
+            humanScore=0;
+            computerScore=0; 
+            setTimeout(()=>{
+                location.reload();}, 3000);
+        }
+        
+});
+
+
+
+
 
